@@ -1,25 +1,51 @@
 <div class="mat-elevation-z8">
-  <table mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+  <table *ngIf="dataSource" mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
     <!-- Id Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      <td mat-cell *matCellDef="let row">{{row.auctionItemId}}</td>
     </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    <ng-container matColumnDef="currentBid">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>currentBid</th>
+      <td mat-cell *matCellDef="let row">{{row.currentBid}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="itemId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>itemId</th>
+      <td mat-cell *matCellDef="let row">{{row.item.itemId}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>description</th>
+      <td mat-cell *matCellDef="let row">{{row.item.description}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="reservePrice">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>reservePrice</th>
+      <td mat-cell *matCellDef="let row">{{row.reservePrice}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsBid">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Bid</th>
+      <td mat-cell *matCellDef="let row">
+        <button md-raised-button (click)=startBidding(row)>Bid</button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsStatus">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">{{status}}</td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator #paginator
-    [length]="dataSource.data.length"
-    [pageIndex]="0"
-    [pageSize]="50"
-    [pageSizeOptions]="[25, 50, 100, 250]">
-  </mat-paginator>
+  <!--<mat-paginator #paginator-->
+    <!--[length]="dataSource.length"-->
+    <!--[pageIndex]="0"-->
+    <!--[pageSize]="50"-->
+    <!--[pageSizeOptions]="[25, 50, 100, 250]">-->
+  <!--</mat-paginator>-->
 </div>

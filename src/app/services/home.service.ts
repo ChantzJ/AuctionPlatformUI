@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
 import {Item} from '../models/Item';
+import { Response } from '@angular/http';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,19 +22,28 @@ export class HomeService {
       item
     };
 
-    return this.http.post(this.url, payload);
+    return this.http.post(this.url + '/auctionItems', payload);
   }
 
   // GET auction items
   getAuctionItems() {
-    return this.http.get(this.url);
+    return this.http.get(this.url + '/auctionItems');
   }
 
   getAuctionItemById(id: any) {
-    return this.http.get(this.url + '/' + id);
+    return this.http.get(this.url + '/auctionItems/' + id);
   }
 
   ping() {
     return this.http.get(this.url + '/ping');
+  }
+
+  bid(auctionItemId: number, maxAutoBidAmount: number, bidderName: string) {
+    const payload = {
+      auctionItemId,
+      maxAutoBidAmount,
+      bidderName
+    };
+    return this.http.post(this.url + '/bids', payload);
   }
 }

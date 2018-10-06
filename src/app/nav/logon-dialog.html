@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Log In</h1>
+<div mat-dialog-content>
+  <p>Name</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.bidderName">
+  </mat-form-field>
+
+  <p>Max Auto Bid</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.maxBidAmount">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Exit</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
