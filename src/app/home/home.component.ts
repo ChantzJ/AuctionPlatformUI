@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {HomeService} from "../services/home.service";
-import {Item} from "../models/Item";
+import {HomeService} from '../services/auction.service';
+import {Item} from '../models/Item';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,9 @@ import {Item} from "../models/Item";
 })
 export class HomeComponent implements OnInit {
 
-  myItem: Item = { itemId: 5, description: "test item 5"};
+  myItem: Item = { itemId: 5, description: 'test item 5'};
 
+  itemId: any;
   reserve: any;
 
 
@@ -26,16 +27,15 @@ export class HomeComponent implements OnInit {
       data => {
         console.log(data);
       }
-    )
-
+    );
   }
 
-  getOneItem() {
-    this.homeService.getAuctionItemById(1).subscribe(
+  getOneItem(id) {
+    this.homeService.getAuctionItemById(id).subscribe(
       data => {
         console.log(data);
       }
-    )
+    );
   }
 
   insertOneItem(item: Item) {
@@ -46,8 +46,7 @@ export class HomeComponent implements OnInit {
       data => {
         console.log(data);
       }
-    )
-
+    );
   }
 
   ping() {
@@ -55,7 +54,7 @@ export class HomeComponent implements OnInit {
       data => {
         console.log(data);
       }
-    )
+    );
   }
 
 }

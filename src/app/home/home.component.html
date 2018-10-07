@@ -1,11 +1,20 @@
-<button (click)="ping()">Test Ping</button>
-<button (click)="getAllItems()">Get All Items</button>
-<button (click)="getOneItem(1)">Get One Item</button>
-<button (click)="insertOneItem(myItem)">Insert Item</button>
-<!--</br>-->
-<input [(ngModel)]=reserve>
-<!--</br>-->
-<input [(ngModel)]=myItem.description>
-<!--</br>-->
-<input [(ngModel)]=myItem.itemId>
-<!--<button (click)="onClickMe()">Click me!</button>-->
+
+<mat-form-field>
+  <button (click)="ping()">Test Ping</button>
+  <button (click)="getAllItems()">Get All Items</button>
+</mat-form-field>
+<mat-form-field>
+  <button (click)="getOneItem(itemId)">Get One Item</button>
+  <mat-label>Item ID</mat-label>
+  <input [(ngModel)]=itemId placeholder="Just a placeholder">
+</mat-form-field>
+
+<mat-form-field>
+  <button (click)="insertOneItem(myItem)">Insert Item</button>
+  <mat-label>Reserve</mat-label>
+  <input [(ngModel)]=reserve placeholder="Just a placeholder">
+  <mat-label>Description</mat-label>
+  <input [(ngModel)]=myItem.description placeholder="Just a placeholder">
+  <mat-label>Item ID</mat-label>
+  <input [(ngModel)]=myItem.itemId placeholder="Just a placeholder">
+</mat-form-field>

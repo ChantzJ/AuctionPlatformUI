@@ -34,10 +34,6 @@ export class HomeService {
     return this.http.get(this.url + '/auctionItems/' + id);
   }
 
-  ping() {
-    return this.http.get(this.url + '/ping');
-  }
-
   bid(auctionItemId: number, maxAutoBidAmount: number, bidderName: string) {
     const payload = {
       auctionItemId,
@@ -45,5 +41,14 @@ export class HomeService {
       bidderName
     };
     return this.http.post(this.url + '/bids', payload);
+  }
+
+  ping() {
+    return this.http.get(this.url + '/ping');
+  }
+
+
+  login(userId: number) {
+    return this.http.get(this.url + '/user/' + userId);
   }
 }

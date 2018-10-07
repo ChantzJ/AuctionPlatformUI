@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { TableDataSource } from './table-datasource';
-import {HomeService} from "../services/home.service";
-import {AuctionItem} from "../models/AuctionItem";
-import {ActivatedRoute, Router} from "@angular/router";
+import {HomeService} from '../services/auction.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -17,15 +15,13 @@ export class TableComponent implements OnInit {
   dataSource: any;
   biddername: any;
   maxAutoBidAmount: number;
-  status: any;
 
-  displayedColumns = ['id', 'currentBid', 'itemId', 'description', 'reservePrice', "actionsBid", "actionsStatus"  ];
+  displayedColumns = ['id', 'currentBid', 'itemId', 'description', 'reservePrice', 'actionsBid'  ];
   constructor(private homeService: HomeService, private _activatedRoute: ActivatedRoute, private _router: Router) {
     this._activatedRoute.params.subscribe(
       params =>  {
         this.biddername = params['bidderName'];
         this.maxAutoBidAmount = params['maxAutoBidAmount'];
-        this.status = "No bid placed";
       });
   }
 
@@ -36,7 +32,7 @@ export class TableComponent implements OnInit {
         this.dataSource = data;
         console.log(data);
       }
-    )
+    );
   }
 
   startBidding(e) {

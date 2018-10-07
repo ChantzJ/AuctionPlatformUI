@@ -16,18 +16,17 @@ import {LogonDialog, NavComponent} from './nav/nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule,
-  MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatFormFieldModule
+  MatCardModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatDialogModule, MatFormFieldModule,
+  MatInputModule, MatSelectModule
 } from '@angular/material';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { TableComponent } from './table/table.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent,  },
-  { path: 'dash', component: DashboardComponent },
   { path: 'table', component: TableComponent, data : {bidderName : 'some value'} }
 
 ];
@@ -37,7 +36,6 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     NavComponent,
-    DashboardComponent,
     TableComponent,
     LogonDialog
   ],
@@ -65,7 +63,9 @@ const routes: Routes = [
     MatDialogModule,
     MatCardModule,
     MatMenuModule,
+    MatSelectModule,
     MatTableModule,
+    MatInputModule,
     MatPaginatorModule,
     MatSortModule,
     HttpClientModule,

@@ -10,9 +10,9 @@
     <mat-nav-list>
       <a mat-list-item (click)=route()>Items</a>
       <a mat-list-item routerLink='/home'>Dev Test</a>
-      <button mat-raised-button (click)="openDialog()">Log In!</button>
+      <button *ngIf="!loggedIn" mat-raised-button (click)="openDialog()">Log In!</button>
       <a mat-list-item >{{welcomeMsg}}</a>
-      <a *ngIf="maxAutoBidAmount" mat-list-item >Max Auto: {{maxAutoBidAmount}}</a>
+      <a *ngIf="loggedIn" mat-list-item >{{maxAutoMsg}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
